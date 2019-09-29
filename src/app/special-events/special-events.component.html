@@ -1,1 +1,19 @@
-<p>special-events works!</p>
+{{specialEvents |json}}
+
+<mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let event of specialEvents">
+        
+        <mat-card>
+            <mat-card-title>{{event.name}}</mat-card-title>
+            <mat-card-subtitle>{{event.description}}</mat-card-subtitle>
+            <mat-card-content>{{event.description}}</mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button>Buy tickets</button>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+            <mat-card-footer>{{event.date | date:'shortDate'}}</mat-card-footer>
+        </mat-card>
+
+    </mat-grid-tile>
+</mat-grid-list>

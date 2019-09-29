@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { EventService } from './event.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AuthService } from './auth.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
