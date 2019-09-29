@@ -11,9 +11,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule} from './material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { EventService } from './event.service';
+import { AuthGuard } from './auth.guard';
+import {TokenInterceptorService} from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,14 @@ import { EventService } from './event.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, EventService],
+
+  providers: [AuthService, EventService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

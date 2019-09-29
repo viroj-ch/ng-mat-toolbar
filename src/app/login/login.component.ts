@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService
+            , private _router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,11 @@ export class LoginComponent implements OnInit {
     //console.log(this.loginUserData)
     this._auth.loginUser(this.loginUserData)
     .subscribe(
-      res => console.log(res),
+      res => {
+        console.log(res)
+        localStorage.setItem('token',res.token)
+        this._router.navigate(['/special'])
+      },
       err => {
         console.log(err);
         this.error =err.message;
