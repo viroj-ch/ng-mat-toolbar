@@ -5,13 +5,13 @@
         <form>
           <p>
             <mat-form-field>
-              <input type="text" matInput placeholder="Username">
+              <input type="text" matInput placeholder="Username" required [(ngModel)] = "registerUserData.email" name="email">
             </mat-form-field>
           </p>
 
           <p>
             <mat-form-field>
-              <input type="password" matInput placeholder="Password">
+              <input type="password" matInput placeholder="Password" required [(ngModel)] = "registerUserData.password" name="password">
             </mat-form-field>
           </p>
 
@@ -20,7 +20,7 @@
           </p>
 
           <div class="button">
-            <button type="submit" mat-button color="primary">Login</button>
+            <button type="submit" mat-button color="primary" (click)="registerUser()">Login</button>
           </div>
 
         </form>

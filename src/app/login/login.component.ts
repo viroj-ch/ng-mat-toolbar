@@ -12,6 +12,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  registerUserData = {}
+
+  registerUser(){
+
+    console.log(this.registerUserData)
+  }
 
   // form: FormGroup = new FormGroup({
   //   username: new FormControl(''),
