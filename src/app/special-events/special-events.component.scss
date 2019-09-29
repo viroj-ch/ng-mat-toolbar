@@ -1,9 +1,8 @@
-
-
   mat-card {
     // width: calc(100% - 70px);
     // height: calc(100% - 70px);
-    //max-width: 400px;
+    min-width: 280px;
+    margin: 0.5rem;
   }
 
   mat-grid-tile {

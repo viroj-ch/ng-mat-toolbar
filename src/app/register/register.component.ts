@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { HttpErrorResponse } from '../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -28,8 +29,13 @@ export class RegisterComponent implements OnInit {
         this._router.navigate(['/special'])
       },
       err => {
-        console.log(err);
-        this.error =err.message;
+        if(err instanceof HttpErrorResponse){
+          if(err.status===0){
+            this.error = err.message
+          } else {
+            this.error = err.error
+          }
+        }
       }
     )
       

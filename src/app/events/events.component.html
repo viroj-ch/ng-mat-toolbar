@@ -1,26 +1,13 @@
-<p>events works!</p>
 {{events |json}}
 
-<mat-grid-list cols="4" rowHeight="2:1">
-
-      
-<mat-grid-tile *ngFor="let event of events">
-    <p>{{event.name}}</p>
-    <p>{{event.description}}</p>
-    <p>{{event._id}}</p>
-    <p>{{event.date | date:'shortDate'}}</p>
-</mat-grid-tile>
-</mat-grid-list>
-
-<div class="event-card">
-    <mat-card   *ngFor="let event of events">
-        <mat-card-title>{{event.name}}</mat-card-title>
+<div style="display: flex; flex-wrap: wrap; ">
+    <mat-card *ngFor="let event of events">
+        <mat-card-title color="primary">{{event.name}}</mat-card-title>
         <mat-card-subtitle>{{event.description}}</mat-card-subtitle>
         <mat-card-content>{{event.description}}</mat-card-content>
         <mat-card-actions align="end">
             <button mat-button>Buy tickets</button>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
+
         </mat-card-actions>
         <mat-card-footer>{{event.date | date:'shortDate'}}</mat-card-footer>
     </mat-card>

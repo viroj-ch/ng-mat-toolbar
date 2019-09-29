@@ -1,6 +1,20 @@
-{{specialEvents |json}}
+<!-- {{specialEvents |json}} -->
 
-<mat-grid-list cols="3" rowHeight="2:1">
+<div style="display: flex; flex-wrap: wrap; ">
+    <mat-card *ngFor="let event of specialEvents">
+        <mat-card-title color="primary">{{event.name}}</mat-card-title>
+        <mat-card-subtitle>{{event.description}}</mat-card-subtitle>
+        <mat-card-content>{{event.description}}</mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button>Buy tickets</button>
+        </mat-card-actions>
+        <mat-card-footer>{{event.date | date:'shortDate'}}</mat-card-footer>
+    </mat-card>
+</div>
+
+
+<h2>Test</h2>
+<mat-grid-list cols="3" rowHeight="4:5" gutterSize="2px">
     <mat-grid-tile *ngFor="let event of specialEvents">
         
         <mat-card>
@@ -9,8 +23,6 @@
             <mat-card-content>{{event.description}}</mat-card-content>
             <mat-card-actions align="end">
                 <button mat-button>Buy tickets</button>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
             </mat-card-actions>
             <mat-card-footer>{{event.date | date:'shortDate'}}</mat-card-footer>
         </mat-card>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { HttpErrorResponse } from '../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,13 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.error =err.message;
+        if(err instanceof HttpErrorResponse){
+          if(err.status===0){
+            this.error = err.message
+          } else {
+            this.error = err.error
+          }
+        }
       }
     )
   }
